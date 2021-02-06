@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Project = require('../model/Project');
+const fetch = require('node-fetch');
 
 router.get('/all', async (req, res) => {
   try {
@@ -8,6 +9,17 @@ router.get('/all', async (req, res) => {
   } catch (error) {
     res.status(400).json(error);
   }
+});
+
+router.get('/githubjobs', async (req, res) => {
+  var jobs = await fetch('https://jobs.github.com/positions.json')
+    .then((res) => {
+      return res.json();
+    })
+    .catch((res) => {
+      console.log('Exception : ', res);
+    });
+  res.json(jobs);
 });
 
 router.put('/like', async (req, res) => {
