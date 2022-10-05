@@ -18,7 +18,7 @@ mongoose.connect(
     useUnifiedTopology: true,
     useFindAndModify: false,
   },
-  () => console.log('Connected to DB')
+  () => console.log('Connected to MongoDB')
 );
 
 //MIDDLEWARES
