@@ -23,7 +23,9 @@ mongoose.connect(
 
 //MIDDLEWARES
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "https://narioalvin.github.io/react-cheez-meez",
+}));
 
 //ROUTE MIDDLEWARES
 app.use('/api/project', projectRoute);
